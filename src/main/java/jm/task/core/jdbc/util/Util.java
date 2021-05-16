@@ -6,11 +6,12 @@ import java.sql.SQLException;
 
 public class Util {
     // реализуйте настройку соеденения с БД
-    private final String URL = "jdbc:mysql://localhost:3306/task_core";
-    private final String USERNAME = "root";
-    private final String PASSWORD = "root";
 
     public Connection connectionDataBase() throws ClassNotFoundException {
+        final String URL = "jdbc:mysql://localhost:3306/task_core";
+        final String USERNAME = "root";
+        final String PASSWORD = "root";
+
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection;
         try {
