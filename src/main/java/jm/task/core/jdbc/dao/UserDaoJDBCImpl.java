@@ -24,13 +24,13 @@ public class UserDaoJDBCImpl implements UserDao {
                 " age TINYINT not NULL, " +
                 " PRIMARY KEY (id))";
         String err = "Failed to create user table";
-        updateDatebase(err, SQL);
+        updateDatabase(err, SQL);
     }
 
     public void dropUsersTable() {
         String SQL = "DROP TABLE IF EXISTS usr";
         String err = "Failed to drop user table";
-        updateDatebase(err, SQL);
+        updateDatabase(err, SQL);
     }
 
     public void saveUser(String name, String lastName, byte age) {
@@ -121,10 +121,10 @@ public class UserDaoJDBCImpl implements UserDao {
     public void cleanUsersTable() {
         String SQL = "TRUNCATE TABLE usr";
         String err = "Failed clean users table";
-        updateDatebase(err,SQL );
+        updateDatabase(err,SQL );
     }
 
-    private void updateDatebase(String err, String SQL) {
+    private void updateDatabase(String err, String SQL) {
         Statement statement = null;
         try {
             statement = connection.createStatement();
