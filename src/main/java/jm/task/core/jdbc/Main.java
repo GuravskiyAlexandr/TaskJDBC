@@ -25,8 +25,7 @@ public class Main {
     }
 
     private static UserService getNewConnection() throws ClassNotFoundException {
-        Util utilConnection = new Util();
-        Connection connection = utilConnection.connectionDataBase();
+        Connection connection = Util.connectionDataBase();
         UserDao userDao = new UserDaoJDBCImpl(connection);
         return new UserServiceImpl(userDao);
     }

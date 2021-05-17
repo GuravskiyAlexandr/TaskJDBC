@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Util {
     // реализуйте настройку соеденения с БД
 
-    public Connection connectionDataBase() throws ClassNotFoundException {
+    public static  Connection connectionDataBase() throws ClassNotFoundException {
         final String URL = "jdbc:mysql://localhost:3306/task_core";
         final String USERNAME = "root";
         final String PASSWORD = "root";
