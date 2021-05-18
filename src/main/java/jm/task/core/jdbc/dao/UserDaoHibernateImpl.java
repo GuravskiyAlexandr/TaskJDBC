@@ -4,6 +4,7 @@ import jm.task.core.jdbc.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.exception.SQLGrammarException;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();
-        } catch (HibernateException e) {
+        } catch (SQLGrammarException e) {
             e.printStackTrace();
             assert session != null;
             session.getTransaction().rollback();

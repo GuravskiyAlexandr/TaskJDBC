@@ -1,13 +1,19 @@
+import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
+import jm.task.core.jdbc.util.HibernateUtil;
+import org.hibernate.SessionFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
 
 public class UserServiceTest {
-    private final UserService userService = new UserServiceImpl();
+    SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+    UserDao userDao = new UserDaoHibernateImpl(sessionFactory);
+    UserService userService = new UserServiceImpl(userDao);
 
     private final String testName = "Ivan";
     private final String testLastName = "Ivanov";

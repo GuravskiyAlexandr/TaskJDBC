@@ -23,16 +23,19 @@ public class Main {
 
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         UserDao userDao = new UserDaoHibernateImpl(sessionFactory);
-        userDao.createUsersTable();
-        userDao.saveUser("Gy", "GYFrO", (byte) 9);
-        userDao.saveUser("Gyd", "GYrFO", (byte) 49);
-        userDao.saveUser("Gys", "GYfFO", (byte) 39);
-        userDao.saveUser("Gye", "GYFdO", (byte) 29);
-        userDao.removeUserById(1);
-        List<User> users = userDao.getAllUsers();
+        UserService service = new UserServiceImpl(userDao);
+
+        service.createUsersTable();
+
+        service.saveUser("Gy", "GYFrO", (byte) 9);
+        service.saveUser("Gyd", "GYrFO", (byte) 49);
+        service.saveUser("Gys", "GYfFO", (byte) 39);
+        service.saveUser("Gye", "GYFdO", (byte) 29);
+        service.removeUserById(1);
+        List<User> users = service.getAllUsers();
         System.out.println(users);
-        userDao.cleanUsersTable();
-        userDao.dropUsersTable();
+        service.cleanUsersTable();
+        service.dropUsersTable();
 
         if (sessionFactory != null) {
             sessionFactory.close();
